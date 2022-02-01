@@ -1,0 +1,21 @@
+<h3 id="hd">DIRECTIVES</h3>
+
+<label>Enter a 2-year program abbreviation(CP or SE)<br>
+  <input [(ngModel)]="program">
+</label>
+<hr>
+<h4 [title]="progCheck()" id="h4chk">
+  <span class="progcss">{{program}}</span> is a program at Sheridan
+</h4>
+<hr>
+<button (click)="headCSS()">Click to change header formatting</button>
+<hr>
+
+<p *ngIf="(program | uppercase) === 'CP' || (program | uppercase) === 'SE'; else other"
+    [ngStyle] = "{color: 'white', backgroundColor: 'blue'}"><!--Java script styling used for backgroundcolor-->
+  CP and SE are 2-year diploma programs</p>
+
+<ng-template #other>
+  <!--here we used css styling for background color!-->
+  <p [ngStyle] = "{color: 'white', 'background-color': 'green'}">Not a 2-year diploma</p>
+</ng-template>
